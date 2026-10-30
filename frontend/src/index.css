@@ -1,0 +1,521 @@
+
+
+
+
+
+
+/* Premium Rent & Flatmate Finder Theme */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ================================
+   BASE
+================================ */
+
+@layer base {
+  * {
+    @apply border-dark-200 dark:border-dark-700;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white text-dark-900 font-sans antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+
+  .dark body {
+    @apply bg-dark-950 text-dark-50;
+  }
+
+  /* FIX: Consistent font rendering and heading spacing */
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    overflow-wrap: break-word;
+    text-wrap: balance;
+  }
+
+  h1 {
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+  }
+
+  h2 {
+    line-height: 1.3;
+    letter-spacing: -0.025em;
+  }
+
+  h3,
+  h4 {
+    line-height: 1.35;
+  }
+
+  h5,
+  h6 {
+    line-height: 1.4;
+  }
+
+  p {
+    line-height: 1.65;
+  }
+
+  /* Prevent large Tailwind headings from overlapping */
+
+  .text-4xl {
+    line-height: 1.2;
+  }
+
+  .text-5xl {
+    line-height: 1.2;
+  }
+
+  .text-6xl,
+  .text-7xl,
+  .text-8xl,
+  .text-9xl {
+    line-height: 1.15;
+  }
+
+  /* Fix tightly spaced headings inside cards and sections */
+
+  h1 + p,
+  h2 + p,
+  h3 + p {
+    margin-top: 0.5rem;
+  }
+
+  ::selection {
+    background: #dcebe2;
+    color: #24483f;
+  }
+
+  .dark ::selection {
+    background: #245443;
+    color: #ffffff;
+  }
+
+  :focus-visible {
+    outline: 2px solid #34745c;
+    outline-offset: 3px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #cbd8d0;
+    border-radius: 999px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #789787;
+  }
+
+  .dark ::-webkit-scrollbar-thumb {
+    background: #475b50;
+  }
+}
+
+/* ================================
+   BUTTONS
+================================ */
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-primary-700 px-5 py-2.5 font-semibold text-white shadow-sm transition-all duration-200;
+  }
+
+  .btn-primary:hover {
+    @apply -translate-y-0.5 bg-primary-800 shadow-md;
+  }
+
+  .btn-primary:active {
+    @apply translate-y-0;
+  }
+
+  .btn-primary:disabled {
+    @apply translate-y-0 cursor-not-allowed opacity-50 shadow-none;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-dark-200 bg-white px-5 py-2.5 font-semibold text-dark-700 transition-all duration-200;
+  }
+
+  .btn-secondary:hover {
+    @apply border-primary-200 bg-primary-50 text-primary-800;
+  }
+
+  .dark .btn-secondary {
+    @apply border-dark-700 bg-dark-800 text-dark-100;
+  }
+
+  .dark .btn-secondary:hover {
+    @apply border-primary-700 bg-dark-700 text-primary-300;
+  }
+
+  .btn-danger {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-red-600 px-5 py-2.5 font-semibold text-white transition-all duration-200;
+  }
+
+  .btn-danger:hover {
+    @apply bg-red-700 shadow-md;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2 font-medium text-dark-600 transition-all duration-200;
+  }
+
+  .btn-ghost:hover {
+    @apply bg-dark-100 text-dark-900;
+  }
+
+  .dark .btn-ghost {
+    @apply text-dark-300;
+  }
+
+  .dark .btn-ghost:hover {
+    @apply bg-dark-800 text-white;
+  }
+
+  /* ================================
+     CARDS
+  ================================ */
+
+  .card {
+    @apply rounded-2xl border border-dark-200 bg-white shadow-sm transition-colors duration-200;
+  }
+
+  .dark .card {
+    @apply border-dark-800 bg-dark-900;
+  }
+
+  .card-hover {
+    @apply card cursor-pointer transition-all duration-300;
+  }
+
+  .card-hover:hover {
+    @apply -translate-y-1 shadow-xl;
+    border-color: #c6dace;
+  }
+
+  .dark .card-hover:hover {
+    border-color: #476b59;
+  }
+
+  /* ================================
+     INPUTS
+  ================================ */
+
+  .input {
+    @apply w-full rounded-xl border border-dark-200 bg-white px-4 py-3 text-dark-900 transition-all duration-200;
+  }
+
+  .input::placeholder {
+    @apply text-dark-400;
+  }
+
+  .input:focus {
+    @apply border-primary-500 outline-none ring-4 ring-primary-100;
+  }
+
+  .dark .input {
+    @apply border-dark-700 bg-dark-800 text-dark-100;
+  }
+
+  .dark .input:focus {
+    @apply border-primary-500 ring-primary-900/40;
+  }
+
+  .label {
+    @apply mb-1.5 block text-sm font-semibold text-dark-700;
+  }
+
+  .dark .label {
+    @apply text-dark-200;
+  }
+
+  /* ================================
+     BADGES
+  ================================ */
+
+  .badge {
+    @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold;
+  }
+
+  .badge-green {
+    @apply badge bg-emerald-100 text-emerald-800;
+  }
+
+  .badge-yellow {
+    @apply badge bg-amber-100 text-amber-800;
+  }
+
+  .badge-red {
+    @apply badge bg-red-100 text-red-700;
+  }
+
+  .badge-blue {
+    @apply badge bg-sky-100 text-sky-800;
+  }
+
+  .badge-purple {
+    @apply badge bg-primary-100 text-primary-800;
+  }
+
+  .dark .badge-green {
+    @apply bg-emerald-900/40 text-emerald-300;
+  }
+
+  .dark .badge-yellow {
+    @apply bg-amber-900/40 text-amber-300;
+  }
+
+  .dark .badge-red {
+    @apply bg-red-900/40 text-red-300;
+  }
+
+  .dark .badge-blue {
+    @apply bg-sky-900/40 text-sky-300;
+  }
+
+  .dark .badge-purple {
+    @apply bg-primary-900/40 text-primary-300;
+  }
+
+  /* ================================
+     LOADING SKELETONS
+  ================================ */
+
+  .skeleton {
+    @apply animate-pulse rounded-xl bg-dark-200;
+  }
+
+  .dark .skeleton {
+    @apply bg-dark-700;
+  }
+
+  /* ================================
+     GLASS EFFECTS
+  ================================ */
+
+  .glass {
+    @apply border border-white/70 bg-white/85 backdrop-blur-xl;
+  }
+
+  .dark .glass {
+    @apply border-dark-700/70 bg-dark-900/85;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary-800 via-primary-600 to-emerald-600 bg-clip-text text-transparent;
+  }
+
+  .dark .gradient-text {
+    @apply from-primary-300 via-primary-400 to-emerald-400;
+  }
+
+  /* ================================
+     SIDEBAR
+  ================================ */
+
+  .sidebar-link {
+    @apply flex items-center gap-3 rounded-xl px-4 py-3 font-medium text-dark-600 transition-all duration-200;
+  }
+
+  .sidebar-link:hover {
+    @apply bg-dark-100 text-dark-900;
+  }
+
+  .dark .sidebar-link {
+    @apply text-dark-300;
+  }
+
+  .dark .sidebar-link:hover {
+    @apply bg-dark-800 text-white;
+  }
+
+  .sidebar-link-active {
+    @apply sidebar-link bg-primary-50 font-semibold text-primary-800;
+  }
+
+  .sidebar-link-active:hover {
+    @apply bg-primary-100 text-primary-900;
+  }
+
+  .dark .sidebar-link-active {
+    @apply bg-primary-900/30 text-primary-300;
+  }
+
+  .dark .sidebar-link-active:hover {
+    @apply bg-primary-900/50 text-primary-200;
+  }
+}
+
+/* ================================
+   UTILITIES
+================================ */
+
+@layer utilities {
+  .glassmorphism {
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+
+  .dark .glassmorphism {
+    background: rgba(15, 23, 42, 0.88);
+  }
+
+  .scale-102 {
+    transform: scale(1.02);
+  }
+
+  .bg-grid-pattern {
+    background-size: 32px 32px;
+    background-image:
+      linear-gradient(to right, rgba(36, 72, 63, 0.045) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(36, 72, 63, 0.045) 1px, transparent 1px);
+  }
+
+  .dark .bg-grid-pattern {
+    background-image:
+      linear-gradient(to right, rgba(134, 190, 157, 0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(134, 190, 157, 0.06) 1px, transparent 1px);
+  }
+}
+
+/* ================================
+   ANIMATIONS
+================================ */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out both;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.4;
+    transform: scale(1.05);
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 8s ease-in-out infinite;
+}
+
+/* Subtle button shine */
+
+.glow-btn {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.glow-btn::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: -120%;
+  width: 70%;
+  height: 100%;
+  background: linear-gradient(
+    110deg,
+    transparent,
+    rgba(255, 255, 255, 0.22),
+    transparent
+  );
+  transform: skewX(-25deg);
+  transition: left 0.65s ease;
+}
+
+.glow-btn:hover::after {
+  left: 150%;
+}
+
+/* ================================
+   RESPONSIVE HEADING FIX
+================================ */
+
+@media (max-width: 640px) {
+  h1 {
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+  }
+
+  h2 {
+    line-height: 1.3;
+  }
+
+  .text-4xl,
+  .text-5xl,
+  .text-6xl,
+  .text-7xl,
+  .text-8xl,
+  .text-9xl {
+    line-height: 1.25;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
