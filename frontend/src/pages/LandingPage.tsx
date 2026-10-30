@@ -237,7 +237,7 @@ export default function LandingPage() {
   const { user } = useAuth();
 
   const explorePath = user
-    ? user.role === "owner"
+    ? user.role === "OWNER"
       ? "/owner/dashboard"
       : "/dashboard"
     : "/register";
@@ -247,7 +247,7 @@ export default function LandingPage() {
     : "/login";
 
   const ownerPath =
-    user?.role === "owner"
+    user?.role === "OWNER"
       ? "/owner/dashboard"
       : user
         ? "/dashboard"
@@ -792,7 +792,7 @@ export default function LandingPage() {
                     to={ownerPath}
                     className="group inline-flex min-h-14 items-center justify-center gap-3 rounded-2xl bg-[#315b3e] px-7 py-4 text-sm font-semibold text-white shadow-[0_12px_28px_-12px_rgba(49,91,62,0.45)] transition-all duration-300 hover:-translate-y-1 hover:bg-[#24492f]"
                   >
-                    {user?.role === "owner"
+                    {user?.role === "OWNER"
                       ? "Open owner dashboard"
                       : "Get started"}
 
